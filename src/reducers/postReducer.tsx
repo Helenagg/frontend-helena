@@ -66,3 +66,5 @@ export const initializeAllPost = () => {
         }
     }
 }
+
+export default allPostsSlice.reducer
