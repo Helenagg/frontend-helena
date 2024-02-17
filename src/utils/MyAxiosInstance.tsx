@@ -2,7 +2,8 @@
 
 import axios from "axios";
 import { BASE_PATH } from "../resources/ApiUrls";
-import { StorageManager } from "./index";
+// import { StorageManager } from "./index";
+import StorageManager from './StorageManager';
 
 const fetchClient = () => {
   const storageManager = new StorageManager();

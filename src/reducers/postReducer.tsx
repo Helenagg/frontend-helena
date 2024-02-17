@@ -1,6 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import PostServices from './../services/PostServices'
-import { AppDispatch } from './../store'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import PostServices from './../services/PostServices';
+import { AppDispatch } from './../store';
+import { toast } from './notificationReducer';
+import { PotsTexts } from '../locale/es';
 
 interface Post {
   userId: number;
@@ -22,7 +24,7 @@ const initialState: PostState = {
 };
 
 const allPostsSlice = createSlice({
-  name: "allPosts",
+  name: 'allPosts',
   initialState,
   reducers: {
     setAllPosts(state, action: PayloadAction<Post[]>) {
@@ -52,19 +54,55 @@ const allPostsSlice = createSlice({
   },
 });
 
-export const { setAllPosts, updatePost, removePost, setPostsLoading, setPostsError } = allPostsSlice.actions
+export const {
+  setAllPosts,
+  updatePost,
+  removePost,
+  setPostsLoading,
+  setPostsError,
+} = allPostsSlice.actions;
 
 export const initializeAllPost = () => {
-    return async (dispatch: AppDispatch) => {
-        try {
-            dispatch(setPostsLoading());
-            const { data } = await PostServices.getPost();
-            dispatch(setAllPosts(data))
-        } catch (error) {
-            console.error(error);
-            dispatch(setPostsError(`${error}`));                     
-        }
+  return async (dispatch: AppDispatch) => {
+    try {
+      dispatch(setPostsLoading());
+      const { data } = await PostServices.getPost();
+      dispatch(setAllPosts(data));
+    } catch (error) {
+      console.error(error);
+      dispatch(setPostsError(`${error}`));
+      dispatch(toast(PotsTexts.LOADING_ERROR, 'error'));
     }
-}
+  };
+};
 
-export default allPostsSlice.reducer
+export const updatePostAction = (id: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      const response = await PostServices.updatePost(id);
+      const updatedPost = response.data;
+      dispatch(updatePost(updatedPost));
+      dispatch(toast(PotsTexts.EDITED, 'success'));
+    } catch (error) {
+      console.error(error);
+      dispatch(setPostsError(`${error}`));
+      dispatch(toast(PotsTexts.EDITED_ERROR, 'error'));
+    }
+  };
+};
+
+export const deletePostAction = (id: number) => {
+  return async (dispatch: AppDispatch) => {
+    try {
+      await PostServices.deletePost(id);
+      dispatch(removePost(id));
+      dispatch(toast(PotsTexts.DELETED, 'success'));
+    } catch (error) {
+      console.error(error);
+      dispatch(setPostsError(`${error}`));
+      dispatch(toast(PotsTexts.DELETED_ERROR, 'error'));
+    }
+  };
+};
+
+export default allPostsSlice.reducer;
