@@ -4,11 +4,11 @@ interface CardProps {
   title?: string;
   body?: string;
   userId?: number;
-  handleDelete?: () => void;
+  onDelete?: () => void;
   handleUpdate?: () => void
 }
 
-const Card: React.FC<CardProps> = ({ title, userId, body, handleDelete, handleUpdate }) => {
+const Card: React.FC<CardProps> = ({ title, userId, body, onDelete, handleUpdate }) => {
   return (
     <div className='max-w-sm rounded overflow-hidden shadow-lg'>
       {/* <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> */}
@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({ title, userId, body, handleDelete, handleUp
           Created By: {userId}
         </span>
         <div className='flex flex-inline gap-2'>
-          <button className='btn-white'onClick={handleDelete}>Delete</button>
+          <button className='btn-white'onClick={onDelete}>Delete</button>
           <button className='btn-primary' onClick={handleUpdate}>Update</button>
         </div>
       </div>
