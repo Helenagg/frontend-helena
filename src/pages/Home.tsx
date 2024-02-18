@@ -17,7 +17,9 @@ const Home = () => {
     <div className='flex flex-wrap gap-4 m-4'>
       {data &&
         data.map((post) => (
-          <Card title={post.title} body={post.body} userId={post.userId} />
+          <div key={post.id}>
+            <Card title={post.title} body={post.body} userId={post.userId} />
+          </div>
         ))}
     </div>
   );
