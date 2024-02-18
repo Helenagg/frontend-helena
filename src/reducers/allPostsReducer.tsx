@@ -62,11 +62,11 @@ export const {
   setPostsError,
 } = allPostsSlice.actions;
 
-export const initializeAllPost = () => {
+export const initializeAllPosts = () => {
   return async (dispatch: AppDispatch) => {
     try {
       dispatch(setPostsLoading());
-      const { data } = await PostServices.getPost();
+      const { data } = await PostServices.getPosts();
       dispatch(setAllPosts(data));
     } catch (error) {
       console.error(error);

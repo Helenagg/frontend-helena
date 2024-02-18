@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postReducer from './reducers/allPostsReducer';
 import notificationReducer from './reducers/notificationReducer';
+import allPostsReducer from './reducers/allPostsReducer';
+import postEditReducer from './reducers/postEditReducer';
 
 // const combinedReducer = combineReducers({
 //     allPosts: postReducer
@@ -12,8 +13,9 @@ import notificationReducer from './reducers/notificationReducer';
 
 const store = configureStore({
   reducer: {
-    allPosts: postReducer,
+    allPosts: allPostsReducer,
     notification: notificationReducer,
+    post: postEditReducer,
   },
 });
 
