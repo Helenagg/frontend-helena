@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import PostServices from './../services/PostServices';
-import { AppDispatch } from './../store';
+import PostServices from '../services/PostServices';
+import { AppDispatch } from '../store';
 import { toast } from './notificationReducer';
 import { PotsTexts } from '../locale/es';
 
