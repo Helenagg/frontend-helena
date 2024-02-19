@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Post from './pages/Post';
 import Notification from './components/Notification';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/post/:id' element={<Post />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

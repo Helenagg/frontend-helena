@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar: FC = () => {
   const location = useLocation();
   return (
     <nav className='bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200'>
@@ -30,7 +30,11 @@ const NavBar = () => {
             <li>
               <Link
                 to='/'
-                className={`block py-2 px-3 ${location.pathname === '/' ? 'text-primary-dark' : 'text-primary-light'} rounded md:p-0 hover:text-primary-dark`}
+                className={`block py-2 px-3 ${
+                  location.pathname === '/'
+                    ? 'text-primary-dark'
+                    : 'text-primary-light'
+                } rounded md:p-0 hover:text-primary-dark`}
                 aria-current='page'
               >
                 Home
@@ -39,14 +43,24 @@ const NavBar = () => {
             <li>
               <Link
                 to='/post'
-                className={`block py-2 px-3 ${location.pathname === '/post' ? 'text-primary-dark' : 'text-primary-light'} rounded md:p-0 hover:text-primary-dark`}              >
+                className={`block py-2 px-3 ${
+                  location.pathname === '/post'
+                    ? 'text-primary-dark'
+                    : 'text-primary-light'
+                } rounded md:p-0 hover:text-primary-dark`}
+              >
                 Post
               </Link>
             </li>
             <li>
               <Link
                 to='/contact'
-                className={`block py-2 px-3 ${location.pathname === '/contact' ? 'text-primary-dark' : 'text-primary-light'} rounded md:p-0 hover:text-primary-dark`}              >
+                className={`block py-2 px-3 ${
+                  location.pathname === '/contact'
+                    ? 'text-primary-dark'
+                    : 'text-primary-light'
+                } rounded md:p-0 hover:text-primary-dark`}
+              >
                 Contact
               </Link>
             </li>
