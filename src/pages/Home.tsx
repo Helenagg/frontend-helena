@@ -10,7 +10,7 @@ const Home = () => {
   );
   const [localData, setLocalData] = useState(data);
   const dispatch = useDispatch<AppDispatch>();
-  console.log('dataHome', data)
+  console.log('dataHome', data);
   useEffect(() => {
     dispatch(initializeAllPosts());
   }, [dispatch]);
@@ -22,22 +22,24 @@ const Home = () => {
   const handleDelete = (id: number) => {
     setLocalData(localData.filter((post) => post.id !== id));
   };
- 
+
   return (
-    <div className='flex flex-wrap gap-4 m-4'>
-      {localData &&
-        localData.map((post) => (
-          <div key={post.id}>
-            <Card
-              isUpdate={false}
-              title={post.title}
-              body={post.body}
-              userId={post.userId}
-              onDelete={() => handleDelete(post.id)}
-              cardId={`/post/${post.id}`}
-            />
-          </div>
-        ))}
+    <div className='mt-20'>
+      <div className='flex flex-wrap gap-4 m-4'>
+        {localData &&
+          localData.map((post) => (
+            <div key={post.id}>
+              <Card
+                isUpdate={false}
+                title={post.title}
+                body={post.body}
+                userId={post.userId}
+                onDelete={() => handleDelete(post.id)}
+                cardId={`/post/${post.id}`}
+              />
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

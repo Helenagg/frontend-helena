@@ -35,7 +35,7 @@ const handleSave = (newTitle: string, newBody: string) => {
   }
 }
   return (
-    <div className='container'>
+    <div className='container mt-20 flex flex-col min-h-screen'>
       {data && (
         <Card 
         isUpdate={true}
