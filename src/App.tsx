@@ -6,6 +6,7 @@ import {} from 'react-router-dom';
 import Home from './pages/Home';
 import Post from './pages/Post';
 import Notification from './components/Notification';
+import NavBar from './components/NavBar';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     // </div>
     <BrowserRouter>
       <Notification />
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/post/:id' element={<Post />} />
