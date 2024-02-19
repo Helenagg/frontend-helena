@@ -27,11 +27,11 @@ function App() {
     //   </header>
     // </div>
     <BrowserRouter>
+      <Notification />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/post/:id' element={<Post />} />
       </Routes>
-      <Notification />
     </BrowserRouter>
   );
 }

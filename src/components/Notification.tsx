@@ -16,7 +16,7 @@ const Notification: React.FC = () => {
   console.log('type', type)
   return (
     <div
-      id={`toast-default" className="flex items-center w-full max-w-xs p-4 text-gray-500 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 ${
+      id="toast-default" className={`flex items-center w-full max-w-xs p-4 text-gray-500 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 ${
         type === 'success' ? 'bg-green-500' : 'bg-red-500'
       }`}
       role='alert'
