@@ -7,10 +7,6 @@ import Card from '../components/Card';
 import { toast } from '../reducers/notificationReducer';
 import { PotsTexts } from '../locale/es';
 
-// interface RouteParams {
-//     id: string;
-// }
-
 const Post = () => {
   let { id } = useParams();
   const postId = id ? parseInt(id, 10) : null;
@@ -19,39 +15,33 @@ const Post = () => {
   );
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
-
+  console.log('data?.body', data?.body)
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (postId !== null) dispatch(initializePost(postId));
   }, [dispatch]);
 
-//   useEffect(() => {
-//     if (data) {
-//         setTitle(data.title)
-//         setBody(data.body)
-//     }
-//   }, [data])
 
-//   const handleTitleChange = (event) => {
-//     setTitle(event.target.innerText)
-//   };
-//   const handleBodyChange = (event) => {
-//     setBody(event.target.innerText)
-//   };
+const handleSave = (newTitle: string, newBody: string) => {
+  console.log('newBpdy', newBody)
 
-const handleSave = (newTile: string, newBody: string) => {
-    setTitle(newTile)
+  if (newTitle !== data?.title || newBody !== data?.body) {
+    setTitle(newTitle)
     setBody(newBody)
     dispatch(toast(PotsTexts.EDITED, 'success'))
+  } else {
+    dispatch(toast(PotsTexts.EDITED_ERROR, 'error'))
+  }
 }
   return (
     <div className='container'>
       {data && (
         <Card 
         isUpdate={true}
-        title={data.title}
-        body={data.body}
+        title={data?.title}
+        body={data?.body}
+        userId={data?.userId}
         cardId={data.id.toString()}
         onSave={handleSave}
         />
