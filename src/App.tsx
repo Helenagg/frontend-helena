@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {} from 'react-router-dom';
 import Home from './pages/Home';
 import Post from './pages/Post';
+import Notification from './components/Notification';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     //   </header>
     // </div>
     <BrowserRouter>
+      <Notification />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/post/:id' element={<Post />} />
