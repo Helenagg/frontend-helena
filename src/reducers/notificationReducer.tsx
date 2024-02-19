@@ -68,7 +68,6 @@ export const notificationSlice = createSlice({
       }
       state.msg = action.payload.msg;
       state.type = action.payload.type;
-      // Aquí no necesitas asignar timeoutId ya que se maneja en la función toast
     },
     removeNotification: (state) => {
       state.timeoutId = null;
