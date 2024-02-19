@@ -22,14 +22,21 @@ const Card: React.FC<CardProps> = ({
   onSave,
 }) => {
   const [editableTitle, setEditableTitle] = useState(title)
-  const [editableBody, setEditablebody] = useState(body)
+  const [editableBody, setEditableBody] = useState(body)
+
+  const handleInputTitle = (e: React.FormEvent<HTMLDivElement>) => {
+    setEditableTitle(e.currentTarget.textContent || '');
+  };
+
+  const handleInputBody = (e: React.FormEvent<HTMLDivElement>) => {
+    setEditableBody(e.currentTarget.textContent || '');
+  };
 
   const handleSave = () => {
     if (onSave) onSave(editableTitle || '', editableBody || '');
   }
   return (
    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
-      {/* <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"> */}
       {!isUpdate ? (
         <>
           <div className='px-6 py-4'>
@@ -45,13 +52,19 @@ const Card: React.FC<CardProps> = ({
       ) : (
         <>
           <div className='px-6 py-4'>
-            <div contentEditable='true' suppressContentEditableWarning={true}>
-              <div className='font-bold text-xl mb-2'>{title}</div>
-            </div>
+            <div
+              contentEditable='true'
+              suppressContentEditableWarning={true}
+              onInput={handleInputTitle}
+              className='font-bold text-xl mb-2'
+            >{title}</div>
 
-            <div contentEditable='true' suppressContentEditableWarning={true}>
-              <p className='text-gray-700 text-base'>{body}</p>
-            </div>
+            <div
+              contentEditable='true'
+              suppressContentEditableWarning={true}
+              onInput={handleInputBody}
+              className='text-gray-700 text-base'
+            >{body}</div>
           </div>
           <div className='px-6 pt-4 pb-2'>
             <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
