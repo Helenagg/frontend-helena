@@ -13,17 +13,21 @@ const Notification: React.FC = () => {
   if (!notification.msg) return null;
 
   const { msg, type } = notification;
-
+    console.log(msg, type)
   return (
     <div
-      id='toast-default'
+    id='toast-default'
+    className={`fixed inset-0 flex items-center justify-center p-4`}
+    role='alert'
+  >
+    <div
       className={`flex items-center w-full max-w-xs p-4 text-gray-900 rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 ${
-        type === 'success' ? 'bg-green-500' : 'bg-red-500'
+        type === 'success' ? 'bg-green-500' : 'bg-secondary'
       }`}
-      role='alert'
     >
       <div className='ms-3 text-sm font-normal'>{msg}</div>
     </div>
+  </div>
   );
 };
 
