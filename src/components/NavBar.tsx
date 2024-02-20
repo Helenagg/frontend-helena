@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { MdLogout } from "react-icons/md";
+import { useUser } from '../hook/useUser';
 
 interface NavProps {
   isLoginPage?: boolean;
@@ -7,6 +9,8 @@ interface NavProps {
 
 const NavBar: FC<NavProps> = ({ isLoginPage }) => {
   const location = useLocation();
+  const { userName } = useUser()
+
   return (
     <>
       {!isLoginPage ? (
@@ -16,17 +20,19 @@ const NavBar: FC<NavProps> = ({ isLoginPage }) => {
               to='/'
               className='flex items-center space-x-3 rtl:space-x-reverse'
             >
-              <span className='self-center text-4xl font-semibold whitespace-nowrap dark:text-white  font-moirai'>
+              <span className='self-center text-4xl font-semibold whitespace-nowrap  font-moirai'>
                 Post App
               </span>
             </Link>
             <div className='flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse'>
-              <button
-                type='button'
-                className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+              <div
+                className='bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary-dark font-medium rounded-lg text-sm px-4 py-2 text-center text-white mr-3'
               >
-                Login Name
-              </button>
+               {userName ? userName : 'Login Name'} 
+              </div>
+              <Link to='/login'>
+                <MdLogout size={30}/>
+              </Link>              
             </div>
             <div
               className='items-center justify-between hidden w-full md:flex md:w-auto md:order-1'

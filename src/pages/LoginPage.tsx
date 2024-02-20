@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useUser } from '../hook/useUser';
 
 const LoginPage = () => {
-  return (
+  const [user, setUser] = useState('');
+  const { setUserName } = useUser();
+
+const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+  setUserName(user);
+}
+
+  return ( 
     <section className='bg-gray-50 dark:bg-gray-900 py-64'>
       <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0'>
         <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
@@ -16,11 +25,13 @@ const LoginPage = () => {
               </label>
               <input
                 type='text'
+                value={user}
                 name='user'
                 id='user'
                 className='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder='Username'
                 required
+                onChange={(e) => setUser(e.target.value)}
               />
             </div>
             <div>

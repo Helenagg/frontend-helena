@@ -9,6 +9,7 @@ import Notification from './components/Notification';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
+import { UserProvider } from '../context/UserContext';
 
 const NavBarWrapper = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
     //     </a>
     //   </header>
     // </div>
+    <UserProvider>
     <BrowserRouter>
       <div className='flex flex-col min-h-screen'>
         <Notification />
@@ -48,6 +50,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </UserProvider>
   );
 }
 
