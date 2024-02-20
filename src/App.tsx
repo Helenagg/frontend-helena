@@ -8,7 +8,8 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
 import { UserProvider } from './context/UserContext';
-
+import { Contact } from './pages/Contact';
+import TheEnd from './pages/TheEnd';
 
 const NavBarWrapper = () => {
   const location = useLocation();
@@ -28,6 +29,8 @@ function App() {
               <Route path='/' element={<LoginPage />} />
               <Route path='/posts' element={<Home />} />
               <Route path='/post/:id' element={<Post />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/theend' element={<TheEnd />} />
             </Routes>
           </main>
           <Footer />
