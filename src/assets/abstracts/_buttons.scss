@@ -4,11 +4,11 @@
 
 @layer components {
     .btn-white {
-        @apply border-2 border-primary rounded-lg bg-white text-base text-center font-bold flex items-center justify-center p-2 px-4;
+        @apply border-2 border-primary rounded-lg bg-white text-sm text-center font-bold flex items-center justify-center p-2 px-4;
         
     }
     .btn-primary {
-        @apply rounded-lg bg-primary text-base text-center font-bold flex items-center justify-center p-2 px-4;
+        @apply rounded-lg bg-primary text-sm text-center font-bold flex items-center justify-center p-2 px-4;
         
     }
 }
