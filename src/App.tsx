@@ -1,14 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import {} from 'react-router-dom';
 import Home from './pages/Home';
 import Post from './pages/Post';
 import Notification from './components/Notification';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import LoginPage from './pages/LoginPage';
 
+const NavBarWrapper = () => {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+  return <NavBar isLoginPage={isLoginPage} />;
+};
 
 function App() {
   return (
@@ -29,13 +35,18 @@ function App() {
     //   </header>
     // </div>
     <BrowserRouter>
-      <Notification />
-      <NavBar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/post/:id' element={<Post />} />
-      </Routes>
-      <Footer />
+      <div className='flex flex-col min-h-screen'>
+        <Notification />
+        <NavBarWrapper />
+        <main className='flex-1'>
+          <Routes>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/post/:id' element={<Post />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }

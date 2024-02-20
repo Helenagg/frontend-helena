@@ -13,6 +13,9 @@ module.exports = {
         'secondary-light': '#F09285',
         'secondary-dark': '#9F2A1A',
       },
+      fontFamily: {
+        'moirai': ['Moirai One', 'system-ui']
+      }
     },
   },
   plugins: [],
