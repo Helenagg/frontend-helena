@@ -3,14 +3,18 @@ import Card from '../components/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { initializeAllPosts } from '../reducers/allPostsReducer';
+import ColorPicker from '../components/ColorPicker';
 
 const Home = () => {
   const { data, loading, error } = useSelector(
     (state: RootState) => state.allPosts
   );
   const [localData, setLocalData] = useState(data);
+  const [selectedColor, setSelectedColor] = useState<string>('')
+  console.log('selectedColor', selectedColor)
+
   const dispatch = useDispatch<AppDispatch>();
-  console.log('dataHome', data);
+ 
   useEffect(() => {
     dispatch(initializeAllPosts());
   }, [dispatch]);
@@ -23,9 +27,15 @@ const Home = () => {
     setLocalData(localData.filter((post) => post.id !== id));
   };
 
+  const handleColorChangeComplete = (color: string) => {
+    console.log('color', color)
+    setSelectedColor(color)
+  }
+
   return (
     <div className='container mt-20'>
-      <div className='flex flex-wrap gap-4 m-4'>
+      <ColorPicker onChangeComplete={handleColorChangeComplete}/>
+      <div className='flex flex-wrap gap-4 m-4 justify-center'>
         {localData &&
           localData.map((post) => (
             <div key={post.id}>
@@ -36,6 +46,7 @@ const Home = () => {
                 userId={post.userId}
                 onDelete={() => handleDelete(post.id)}
                 cardId={`/post/${post.id}`}
+                bgColor={selectedColor}
               />
             </div>
           ))}

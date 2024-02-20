@@ -1,10 +1,14 @@
 export const PotsTexts = {
   LOADING_ERROR:
-    'Se ha producido un error al obtener las respuestas. Por favor, inténtalo de nuevo.',
-  EDITED: 'Post editado correctamente',
+    'An error occurred while obtaining the responses. Please try again.',
+  EDITED: 'Post edited correctly',
   EDITED_ERROR:
-    'Debe modificar al menos un caracter',
-  DELETED: 'Post borrado con éxito',
+    'You must modify at least one character',
+  DELETED: 'Post successfully deleted',
   DELETED_ERROR:
-    'Se ha producido un error al borrar el Post, inténtelo de nuevo',
+    'An error occurred while deleting the Post, please try again',
 };
+
+export const CardTexts = {
+  BG_CARD: 'Card background color'
+}
