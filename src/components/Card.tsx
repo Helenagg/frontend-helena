@@ -94,7 +94,7 @@ const Card: React.FC<CardProps> = ({
           <button className='btn-white' onClick={handleSave}>
             Save
           </button>
-          <Link to='/' className='btn-primary'>
+          <Link to='/posts' className='btn-primary'>
             Go Back
           </Link>
         </div>

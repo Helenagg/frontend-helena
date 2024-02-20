@@ -11,4 +11,8 @@
         @apply rounded-lg bg-primary text-sm text-center font-bold flex items-center justify-center p-2 px-4;
         
     }
+    .btn-primary-light {
+        @apply rounded-lg bg-primary-light text-base text-center font-bold flex items-center justify-center p-2 px-4;
+        
+    }
 }
