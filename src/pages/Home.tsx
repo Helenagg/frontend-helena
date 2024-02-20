@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className='mt-20'>
+    <div className='container mt-20'>
       <div className='flex flex-wrap gap-4 m-4'>
         {localData &&
           localData.map((post) => (
