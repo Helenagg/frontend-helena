@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CardTexts } from '../../locale/en';
 
 interface CardProps {
   title?: string;
@@ -47,7 +48,7 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className='px-6 pt-4 pb-2'>
             <span className='inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-              Created By: {userId}
+               {CardTexts.USER_ID}{userId}
             </span>
           </div>
         </>
@@ -74,7 +75,7 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className='px-6 pt-4 pb-2'>
             <span className='inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'>
-              Created By: {userId}
+            {CardTexts.USER_ID}{userId}
             </span>
           </div>
         </>
@@ -83,19 +84,19 @@ const Card: React.FC<CardProps> = ({
       {!isUpdate ? (
         <div className='flex flex-inline gap-2 pb-2 pl-2'>
           <button className='btn-white' onClick={onDelete}>
-            Delete
+            {CardTexts.DELETE}
           </button>
           <Link to={cardId} className='btn-primary'>
-            Update
+          {CardTexts.UPDATE}
           </Link>
         </div>
       ) : (
         <div className='flex flex-inline gap-2 pb-2 pl-2'>
           <button className='btn-white' onClick={handleSave}>
-            Save
+          {CardTexts.SAVE}
           </button>
           <Link to='/posts' className='btn-primary'>
-            Go Back
+          {CardTexts.GO_BACK}
           </Link>
         </div>
       )}

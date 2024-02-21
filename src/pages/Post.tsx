@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { AppDispatch, RootState } from '../store';
 import { initializePost } from '../reducers/postEditReducer';
-import Card from '../components/Card';
+import Card from '../components/Card/Card';
 import { toast } from '../reducers/notificationReducer';
-import { PotsTexts } from '../locale/es';
+import { PotsTexts } from '../locale/en';
 
 const Post = () => {
   let { id } = useParams();
@@ -15,7 +15,6 @@ const Post = () => {
   );
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
-  console.log('data?.body', data?.body)
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -24,7 +23,6 @@ const Post = () => {
 
 
 const handleSave = (newTitle: string, newBody: string) => {
-  console.log('newBpdy', newBody)
 
   if (newTitle !== data?.title || newBody !== data?.body) {
     setTitle(newTitle)

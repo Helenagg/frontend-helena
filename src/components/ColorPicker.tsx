@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
-import { CardTexts } from '../locale/es';
+import { CardTexts } from '../locale/en';
 
 interface ColorPickerProps {
     onChangeComplete?: (color: string) => void;

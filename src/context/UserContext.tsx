@@ -14,7 +14,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     const savedUserName = localStorage.getItem('userName');
     return savedUserName || '';
   });
-  console.log('useName',userName)
+  
   useEffect(() => {
     localStorage.setItem('userName', userName);
   }, [userName]);

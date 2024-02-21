@@ -13,7 +13,7 @@ const Notification: React.FC = () => {
   if (!notification.msg) return null;
 
   const { msg, type } = notification;
-    console.log(msg, type)
+    
   return (
     <div
     id='toast-default'
