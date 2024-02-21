@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Card from '../components/Card';
+import Card from '../components/Card/Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store';
 import { initializeAllPosts } from '../reducers/allPostsReducer';
@@ -10,11 +10,10 @@ const Home = () => {
     (state: RootState) => state.allPosts
   );
   const [localData, setLocalData] = useState(data);
-  const [selectedColor, setSelectedColor] = useState<string>('')
-  console.log('selectedColor', selectedColor)
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
   const dispatch = useDispatch<AppDispatch>();
- 
+
   useEffect(() => {
     dispatch(initializeAllPosts());
   }, [dispatch]);
@@ -28,13 +27,12 @@ const Home = () => {
   };
 
   const handleColorChangeComplete = (color: string) => {
-    console.log('color', color)
-    setSelectedColor(color)
-  }
+    setSelectedColor(color);
+  };
 
   return (
     <div className='container mt-20'>
-      <ColorPicker onChangeComplete={handleColorChangeComplete}/>
+      <ColorPicker onChangeComplete={handleColorChangeComplete} />
       <div className='flex flex-wrap gap-4 m-4 justify-center'>
         {localData &&
           localData.map((post) => (

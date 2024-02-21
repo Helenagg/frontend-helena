@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
-import { CardTexts } from '../locale/es';
+import { CardTexts } from '../locale/en';
 
 interface ColorPickerProps {
     onChangeComplete?: (color: string) => void;
@@ -25,7 +25,7 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ onChangeComplete }) => {
         }
     }
   return (
-    <div className='grid justify-items-end'>
+    <div className='grid justify-items-center md:justify-items-end'>
         <button className='btn-white' onClick={handleClick}>{CardTexts.BG_CARD}</button>
         {displayColorPicker ? (
             <div className='absolute z-20'>
